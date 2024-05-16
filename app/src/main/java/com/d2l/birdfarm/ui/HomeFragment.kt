@@ -1,15 +1,13 @@
-package com.d2l.birdfarm
+package com.d2l.birdfarm.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.fragment.app.FragmentContainer
+import com.d2l.birdfarm.R
 import com.d2l.birdfarm.databinding.FragmentHomeBinding
-import com.google.android.material.switchmaterial.SwitchMaterial
+import com.d2l.birdfarm.utils.SessionManager
 
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -38,13 +36,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
         }
 
-        binding.switchLight.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.switchLight.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 binding.lightIcon.setImageResource(R.drawable.light_on)
             } else {
                 binding.lightIcon.setImageResource(R.drawable.light)
             }
         }
+
+        binding.name.setText(SessionManager.getName(this.requireContext()))
+
     }
 
     override fun onDestroyView() {

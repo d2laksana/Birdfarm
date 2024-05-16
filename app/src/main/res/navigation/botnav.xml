@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.d2l.birdfarm.HomeFragment"
+        android:name="com.d2l.birdfarm.ui.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/setting"
-        android:name="com.d2l.birdfarm.SettingFragment"
+        android:name="com.d2l.birdfarm.ui.SettingFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/profile"
-        android:name="com.d2l.birdfarm.ProfileFragment"
+        android:name="com.d2l.birdfarm.ui.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

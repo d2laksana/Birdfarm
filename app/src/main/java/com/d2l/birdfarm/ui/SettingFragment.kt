@@ -1,13 +1,13 @@
-package com.d2l.birdfarm
+package com.d2l.birdfarm.ui
 
 import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import com.d2l.birdfarm.R
 import com.d2l.birdfarm.databinding.FragmentSettingBinding
 
 
@@ -28,7 +28,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sharedPreferences = this.activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) ?: return
+        val sharedPreferences = this.activity?.getSharedPreferences(this.requireContext().getString(R.string.app_name), Context.MODE_PRIVATE) ?: return
         val darkModeEnabled = sharedPreferences.getBoolean("darkMode", false)
         if(darkModeEnabled) {
             binding.darkmode.isChecked = true
@@ -40,7 +40,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             if (binding.darkmode.isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 binding.darkmode.isChecked = false
-                val sharedPreferences = this.activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) ?: return@setOnClickListener
+                val sharedPreferences = this.activity?.getSharedPreferences(this.requireContext().getString(R.string.app_name), Context.MODE_PRIVATE) ?: return@setOnClickListener
                 with(sharedPreferences.edit()){
                     putBoolean("darkMode", false)
                     apply()
@@ -48,7 +48,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 binding.darkmode.isChecked = true
-                val sharedPreferences = this.activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) ?: return@setOnClickListener
+                val sharedPreferences = this.activity?.getSharedPreferences(this.requireContext().getString(R.string.app_name), Context.MODE_PRIVATE) ?: return@setOnClickListener
                 with(sharedPreferences.edit()){
                     putBoolean("darkMode", true)
                     apply()
@@ -59,20 +59,21 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
         binding.darkmode.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                val sharedPreferences = this.activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) ?: return@setOnCheckedChangeListener
+                val sharedPreferences = this.activity?.getSharedPreferences(this.requireContext().getString(R.string.app_name), Context.MODE_PRIVATE) ?: return@setOnCheckedChangeListener
                 with(sharedPreferences.edit()){
                     putBoolean("darkMode", true)
                     apply()
                 }
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                val sharedPreferences = this.activity?.getSharedPreferences("MyPrefs", Context.MODE_PRIVATE) ?: return@setOnCheckedChangeListener
+                val sharedPreferences = this.activity?.getSharedPreferences(this.requireContext().getString(R.string.app_name), Context.MODE_PRIVATE) ?: return@setOnCheckedChangeListener
                 with(sharedPreferences.edit()){
                     putBoolean("darkMode", false)
                     apply()
                 }
             }
         }
+
 
 
     }

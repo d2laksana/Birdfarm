@@ -1,4 +1,4 @@
-package com.d2l.birdfarm
+package com.d2l.birdfarm.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
