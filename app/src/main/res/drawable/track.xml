@@ -1,0 +1,10 @@
+<!-- res/drawable/custom_track_drawable.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <!-- Customize the track width here -->
+            <size android:width="74dp"/>
+            <corners android:radius="120dp" />
+        </shape>
+    </item>
+</layer-list>

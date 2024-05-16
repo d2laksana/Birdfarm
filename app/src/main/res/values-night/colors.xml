@@ -14,4 +14,7 @@
     <color name="primary">#178FFF</color>
     <color name="secondary">#45A5FF</color>
     <color name="primaryText">#FFFFFF</color>
+
+    <color name="rippleNav">@color/material_dynamic_primary60</color>
+    <color name="secondaryText">#858585</color>
 </resources>

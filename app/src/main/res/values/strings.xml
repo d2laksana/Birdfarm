@@ -9,4 +9,23 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="drawable_bot_login">drawable bot login</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="welcome_message">Selamat Datang</string>
+    <string name="sign_up">Sign up</string>
+    <string name="drawable_top_left_login">drawable top left login</string>
+    <string name="drawable_top_right_login">drawable top right login</string>
+    <string name="password_confirmation">Password Confirmation</string>
+    <string name="name">Name</string>
+    <string name="welcome_message_signup">Buat Akun Baru</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="userName">Danu Dwiki Laksana</string>
+    <string name="stock">Stock</string>
+    <string name="greetings">Haiii...</string>
+    <string name="monitoring_system">Monitoring System</string>
+    <string name="switch_label">Light</string>
+    <string name="toggleLight">Toggle Light</string>
 </resources>

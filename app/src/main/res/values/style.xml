@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="activeColorNav" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/material_dynamic_primary90</item>
+    </style>
 
+    <style name="customSwitch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="trackTint">@color/track_color_selector</item>
+        <item name="thumbTint">@color/thumb_color_selector</item>
+    </style>
 </resources>

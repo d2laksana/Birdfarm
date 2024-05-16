@@ -14,4 +14,8 @@
     <color name="primary">#0085FF</color>
     <color name="secondary">#1172CC</color>
     <color name="primaryText">#000000</color>
+<!--    <color name="progress_out">#</color>-->
+
+    <color name="rippleNav">@color/material_dynamic_primary90</color>
+    <color name="secondaryText">#858585</color>
 </resources>
