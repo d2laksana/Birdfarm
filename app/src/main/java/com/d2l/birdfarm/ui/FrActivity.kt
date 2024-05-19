@@ -1,7 +1,9 @@
 package com.d2l.birdfarm.ui
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -22,8 +24,6 @@ class FrActivity : AppCompatActivity() {
         val navView:BottomNavigationView = binding.botNav
         val navController = findNavController(R.id.navhost)
         navView.setupWithNavController(navController)
-
-
-
     }
+
 }

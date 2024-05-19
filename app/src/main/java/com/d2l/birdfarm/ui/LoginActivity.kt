@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -14,6 +13,7 @@ import com.d2l.birdfarm.data.api.response.BaseResponse
 import com.d2l.birdfarm.data.api.response.auth.LoginResponse
 import com.d2l.birdfarm.databinding.ActivityLoginBinding
 import com.d2l.birdfarm.utils.SessionManager
+import com.d2l.birdfarm.utils.ToastMSG
 import com.d2l.birdfarm.viewmodel.AuthViewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -44,10 +44,6 @@ class LoginActivity : AppCompatActivity() {
 
 
 //        login logic
-        val token = SessionManager.getToken(this)
-        if (!token.isNullOrBlank()) {
-            navigateToDash()
-        }
 
         viewModel.loginResult.observe(this) {
             when(it) {
@@ -61,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 is BaseResponse.Error -> {
-                    processError(it.message)
+                    ToastMSG().ErrorMSG(it.message, this)
                     binding.loading.visibility = View.GONE
                 }
                 else -> {
@@ -86,21 +82,24 @@ class LoginActivity : AppCompatActivity() {
         viewModel.loginUser(email = email, pass = pass)
     }
 
-    private fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-    }
-
-    private fun processError(msg: String?) {
-        showToast("Error:$msg")
-    }
-
     private fun processLogin(data: LoginResponse?) {
-        showToast("Success:" + data?.message)
+        ToastMSG().SuccessMSG("Success:" + data?.message, this)
         if (!data?.data?.token.isNullOrBlank()) {
             data?.data?.token?.let { SessionManager.saveAuthToken(this, it) }
             val name = data?.data?.name ?: ""
             val email = data?.data?.email ?: ""
-            SessionManager.saveUserdata(this, name, email)
+            val id = data?.data?.id.toString()
+            val apikey = data?.data?.apikey ?: ""
+            SessionManager.saveUserdata(this, name = name, email = email, id = id, apikey = apikey)
+            navigateToDash()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        val token = SessionManager.getToken(this)
+        if (!token.isNullOrBlank()) {
             navigateToDash()
         }
     }

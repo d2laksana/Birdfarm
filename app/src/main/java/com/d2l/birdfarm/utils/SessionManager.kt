@@ -11,9 +11,11 @@ object SessionManager {
         saveString(context, USER_TOKEN, token)
     }
 
-    fun saveUserdata(context: Context, name: String, email: String) {
+    fun saveUserdata(context: Context, name: String, email: String, id: String, apikey: String) {
+        saveString(context, "id", id)
         saveString(context, "name", name)
         saveString(context, "email", email)
+        saveString(context, "apikey", apikey)
     }
 
     fun getToken(context: Context): String? {
@@ -26,6 +28,14 @@ object SessionManager {
 
     fun getEmail(context: Context): String? {
         return getString(context, "email")
+    }
+
+    fun getUserid(context: Context): String? {
+        return getString(context, "id")
+    }
+
+    fun getApikey(context: Context): String? {
+        return getString(context, "apikey")
     }
 
     private fun saveString(context: Context, key: String, value: String) {
@@ -47,6 +57,7 @@ object SessionManager {
         val editor = context.getSharedPreferences(context.getString(R.string.app_name),
             Context.MODE_PRIVATE).edit()
         editor.remove(USER_TOKEN)
+        editor.remove("id")
         editor.remove("name")
         editor.remove("email")
         editor.apply()

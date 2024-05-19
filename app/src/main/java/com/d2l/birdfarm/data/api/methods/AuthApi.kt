@@ -1,5 +1,6 @@
 package com.d2l.birdfarm.data.api.methods
 
+import android.content.Context
 import com.d2l.birdfarm.data.api.ApiClient
 import com.d2l.birdfarm.data.api.requests.auth.LoginRequest
 import com.d2l.birdfarm.data.api.requests.auth.RegisterRequest
@@ -18,8 +19,8 @@ interface AuthApi {
     suspend fun registerUser(@Body registerRequest: RegisterRequest): Response<RegisterResponse>
 
     companion object {
-        fun getApi(): AuthApi? {
-            return ApiClient.client?.create(AuthApi::class.java)
+        fun getApi(context: Context): AuthApi? {
+            return ApiClient.client(context)?.create(AuthApi::class.java)
         }
 
     }

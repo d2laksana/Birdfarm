@@ -19,6 +19,7 @@ class AuthViewModel (application: Application) : AndroidViewModel(application) {
     val loginResult: MutableLiveData<BaseResponse<LoginResponse>> = MutableLiveData()
     val regisResult: MutableLiveData<BaseResponse<RegisterResponse>> = MutableLiveData()
 
+
     fun loginUser(email: String, pass: String) {
         loginResult.value = BaseResponse.Loading()
 
@@ -28,7 +29,7 @@ class AuthViewModel (application: Application) : AndroidViewModel(application) {
                     email = email,
                     password = pass
                 )
-                val response = repo.loginUser(loginRequest = loginRequest)
+                val response = repo.loginUser(loginRequest = loginRequest, getApplication<Application>().applicationContext)
                 if (response?.code() == 200) {
                     loginResult.value = BaseResponse.Success(response.body())
                 } else {
@@ -53,7 +54,7 @@ class AuthViewModel (application: Application) : AndroidViewModel(application) {
                     password = pass,
                     passwordConfirmation = passcon
                 )
-                val response = repo.registerUser(registerRequest = registerRequest)
+                val response = repo.registerUser(registerRequest = registerRequest, getApplication<Application>().applicationContext)
                 if (response?.code() == 201) {
                     regisResult.value = BaseResponse.Success(response.body())
                 } else {

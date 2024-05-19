@@ -30,11 +30,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
 
         val sharedPreferences = this.activity?.getSharedPreferences(this.requireContext().getString(R.string.app_name), Context.MODE_PRIVATE) ?: return
         val darkModeEnabled = sharedPreferences.getBoolean("darkMode", false)
-        if(darkModeEnabled) {
-            binding.darkmode.isChecked = true
-        } else {
-            binding.darkmode.isChecked = false
-        }
+        binding.darkmode.isChecked = darkModeEnabled
 
         binding.darkModeLayout.setOnClickListener {
             if (binding.darkmode.isChecked) {
@@ -56,7 +52,7 @@ class SettingFragment : Fragment(R.layout.fragment_setting) {
             }
         }
 
-        binding.darkmode.setOnCheckedChangeListener { buttonView, isChecked ->
+        binding.darkmode.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 val sharedPreferences = this.activity?.getSharedPreferences(this.requireContext().getString(R.string.app_name), Context.MODE_PRIVATE) ?: return@setOnCheckedChangeListener
