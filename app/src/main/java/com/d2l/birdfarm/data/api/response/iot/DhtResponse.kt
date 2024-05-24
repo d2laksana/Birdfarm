@@ -8,7 +8,7 @@ data class DhtResponse(
 	val code: Int? = null,
 
 	@field:SerializedName("data")
-	val data: Data? = null,
+	val data: DataDHT? = null,
 
 	@field:SerializedName("success")
 	val success: Boolean? = null,
@@ -29,7 +29,7 @@ data class HumidityItem(
 	val apikey: String? = null,
 
 	@field:SerializedName("_value")
-	val value: Any? = null
+	val value: Float?
 )
 
 data class TemperatureItem(
@@ -44,10 +44,10 @@ data class TemperatureItem(
 	val apikey: String? = null,
 
 	@field:SerializedName("_value")
-	val value: Any? = null
+	val value: Float?
 )
 
-data class Data(
+data class DataDHT(
 
 	@field:SerializedName("temperature")
 	val temperature: List<TemperatureItem?>? = null,
